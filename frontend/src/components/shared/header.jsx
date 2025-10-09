@@ -9,7 +9,15 @@ function Header() {
       <nav className="w-full p-4 flex justify-end">
         <ul className="flex gap-8 cursor-pointer">
           <li>
-            <a href="/" className="text-xl text-white hover:text-green-200">
+            <a
+              href="/about"
+              className="text-lg text-white hover:text-green-200"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a href="/" className="text-lg text-white hover:text-green-200">
               Home
             </a>
           </li>
