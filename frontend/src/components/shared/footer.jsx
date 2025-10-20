@@ -1,11 +1,5 @@
 function Footer() {
-  const authors = [
-    "Emiliano Sánchez Moreno",
-    "Valentina Tejeda Fuentes",
-    "Pedro Enrique Mendoza García",
-    "Brisa Sofía León Pérez",
-    "Bruno Arturo Goñi Flores",
-  ];
+  const authors = ["Emiliano Sánchez Moreno"];
 
   return (
     <footer className="w-full bg-black/30 backdrop-blur-md text-white/60 text-sm mt-12 border-t border-white/10">
