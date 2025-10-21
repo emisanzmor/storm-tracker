@@ -41,9 +41,7 @@ function About() {
         <div>
           <h2 className="text-2xl font-semibold mb-2">Beneficios</h2>
           <ul className="list-disc list-inside text-gray-300 space-y-1">
-            <li>Investigadores y meteorólogos</li>
-            <li>Desarrolladores de aplicaciones meteorológicas</li>
-            <li>Entusiastas del clima y la meteorología</li>
+            <li>Meteorologia</li>
           </ul>
         </div>
 
