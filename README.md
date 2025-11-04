@@ -1,4 +1,5 @@
 # storm-tracker
 
-<img width="1440" height="900" alt="Screenshot 2025-10-12 at 14 14 33" src="https://github.com/user-attachments/assets/8b8b7edc-851e-4da7-80e3-c6120987435f" />
-<img width="1440" height="900" alt="Screenshot 2025-10-12 at 14 14 40" src="https://github.com/user-attachments/assets/740fe485-fea0-4d67-8e68-40f3c4de455f" />
+<img width="1440" height="900" alt="Screenshot 2025-11-04 at 1 16 51" src="https://github.com/user-attachments/assets/3df86234-f595-44fc-843f-df469a1809cc" />
+<img width="1440" height="900" alt="Screenshot 2025-11-04 at 1 17 11" src="https://github.com/user-attachments/assets/6656be92-1b36-4af5-bfdb-4a7fa4e4ad46" />
+<img width="1440" height="900" alt="Screenshot 2025-11-04 at 1 17 19" src="https://github.com/user-attachments/assets/0d88fd9f-8288-4c88-a466-5580f5b661d0" />
