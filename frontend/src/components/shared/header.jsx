@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full z-50 flex flex-row backdrop-blur-md bg-black/30">
+    <header className="relative top-0 left-0 w-full z-50 flex flex-row backdrop-blur-md bg-black/30">
       <div className="flex flex-col p-4 w-auto">
         <Link to="/" className="pl-4 text-xl text-green-400 whitespace-nowrap">
           Storm Tracker

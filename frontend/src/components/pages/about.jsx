@@ -1,10 +1,10 @@
 function About({ data }) {
   return (
-    <section className="min-h-screen text-white p-8 pt-32">
+    <section className="min-h-screen text-white p-8 pt-16">
       <div className="max-w-5xl mx-auto space-y-16">
         {/* Hero */}
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">
+          <h1 className="text-4xl font-medium mb-4">
             Acerca de la API de Datos de Tormentas
           </h1>
           <p className="text-lg text-gray-300">
@@ -13,7 +13,7 @@ function About({ data }) {
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Objetivo del Proyecto</h2>
+          <h2 className="text-2xl font-medium mb-2">Objetivo del Proyecto</h2>
           <p className="text-gray-300">
             Nuestra API recolecta datos en tiempo real de tormentas usando la
             librería <span className="font-bold">Tropycal</span>, genera
@@ -24,25 +24,25 @@ function About({ data }) {
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Cómo Funciona</h2>
+          <h2 className="text-2xl font-medium mb-2">Cómo Funciona</h2>
           <ul className="list-disc list-inside text-gray-300 space-y-2">
             <li>
-              <span className="font-semibold">Recolección de datos:</span>{" "}
+              <span className="font-medium">Recolección de datos:</span>{" "}
               Tropycal obtiene información actualizada de las tormentas.
             </li>
             <li>
-              <span className="font-semibold">Generación de JSON:</span> La API
+              <span className="font-medium">Generación de JSON:</span> La API
               transforma los datos en un formato accesible.
             </li>
             <li>
-              <span className="font-semibold">Visualizaciones:</span> Se generan
+              <span className="font-medium">Visualizaciones:</span> Se generan
               imágenes de las tormentas y un mapa dinámico con Folium.
             </li>
           </ul>
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Tecnologías</h2>
+          <h2 className="text-2xl font-medium mb-2">Tecnologías</h2>
           <p className="text-gray-300">
             Python, Tropycal, FastAPI (API), Folium, JSON, React, Vite, Tailwind
             CSS
