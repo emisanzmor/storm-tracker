@@ -1,7 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./datepicker.css";
 
 function Home() {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    // Here you can add your API call when ready
+    console.log("Selected date:", date);
+  };
+
   // SAMPLE DATA FOR ACTIVE STORMS, WILL DELETE WHEN INTEGRATED WITH BACKEND
   const [activeStorms, setActiveStorms] = useState([
     {
@@ -103,17 +114,36 @@ function Home() {
             Tormentas pasadas
           </h2>
 
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 h-120 ">
-            <div className=" rounded-2xl p-6  bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
-              <h3 className="text-xl font-medium text-white mb-6 ">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 h-120">
+            <div className="rounded-2xl p-6 bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+              <h3 className="text-xl font-medium text-white mb-6">
                 Calendario
               </h3>
+              <div className="calendar-container">
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={handleDateChange}
+                  inline
+                  dateFormat="dd/MM/yyyy"
+                  showMonthDropdown
+                  showYearDropdown
+                  dropdownMode="select"
+                />
+              </div>
             </div>
 
-            <div className="rounded-2xl p-6  flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+            <div className="rounded-2xl p-6 flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
               <h3 className="text-xl font-medium text-white mb-6">
-                Tormenta del dÃ­a seleccionado
+                Tormenta del día seleccionado
               </h3>
+              <p className="text-white/60">
+                {selectedDate.toLocaleDateString("es-ES", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric"
+                })}
+              </p>
             </div>
           </div>
         </section>
