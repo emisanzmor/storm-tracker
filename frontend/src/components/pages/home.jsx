@@ -1,153 +1,109 @@
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import "./datepicker.css";
+import { Link } from "react-router-dom";
 
 function Home() {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    // Here you can add your API call when ready
-    console.log("Selected date:", date);
-  };
-
-  // SAMPLE DATA FOR ACTIVE STORMS, WILL DELETE WHEN INTEGRATED WITH BACKEND
-  const [activeStorms, setActiveStorms] = useState([
-    {
-      id: 1,
-      name: "Storm A",
-    },
-    {
-      id: 2,
-      name: "Storm B",
-    },
-    {
-      id: 3,
-      name: "Storm C",
-    },
-  ]);
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % activeStorms.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + activeStorms.length) % activeStorms.length
-    );
-  };
-
   return (
-    <div className="min-h-screen py-16 px-4">
-      <div className="max-w-7xl mx-auto space-y-12">
-        <section className="space-y-6">
-          <h2 className="text-3xl font-medium text-white text-center">
-            Tormentas activas
-          </h2>
+    <div className="px-6 py-12">
 
-          {activeStorms.length > 0 ? (
-            <div className="relative max-w-3xl mx-auto">
-              <div className="bg-slate-800/40 border border-slate-700 backdrop-blur-3xl rounded-xl p-6">
-                <div className="bg-slate-900/80 rounded-md overflow-hidden mb-6 h-114 flex items-center justify-center m-6">
-                  <h1 className="text-white/40">Mapa con folium</h1>
-                </div>
+      <div className="px-6 py-12">
+      <section className="space-y-6">
+        aqui sugiero un texto en grande y bonito con un logo, algo que llame la atencion y que este centrado
+      </section>
+      </div>
 
-                <div className="flex gap-3 items-center">
-                  <input
-                    type="text"
-                    value={activeStorms[currentSlide].name}
-                    readOnly
-                    className="flex-1 px-2 py-2 rounded-lg text-white text-center cursor-pointer hover:text-green-200"
-                    placeholder="Nombre de la tormenta"
-                  />
-                </div>
-              </div>
 
-              {activeStorms.length > 1 && (
-                <>
-                  <button
-                    onClick={prevSlide}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-slate-700/20 backdrop-blur-xl hover:bg-slate-700/60 text-slate-400 rounded-full p-3 shadow-lg transition-all"
-                    aria-label="Tormenta anterior"
-                  >
-                    <ChevronLeft size={24} />
-                  </button>
-
-                  <button
-                    onClick={nextSlide}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-slate-700/20 backdrop-blur-xl hover:bg-slate-700/60 text-slate-400 rounded-full p-3 shadow-lg transition-all"
-                    aria-label="Siguiente tormenta"
-                  >
-                    <ChevronRight size={24} />
-                  </button>
-                </>
-              )}
-
-              <div className="flex justify-center gap-2 mt-6">
-                {activeStorms.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`h-2 rounded-full transition-all ${
-                      index === currentSlide
-                        ? "w-8 bg-blue-900"
-                        : "w-2 bg-slate-600 hover:bg-slate-500"
-                    }`}
-                    aria-label={`Ir a tormenta ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : (
-            <p className="text-white/60 text-center">
-              No hay tormentas activas
+      <section className="space-y-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 h-120">
+          
+          <div className="rounded-2xl p-6 flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+            <h3 className="text-xl font-medium text-white mb-6">Storm Tracker</h3>
+            <p className="text-white/60 mb-4">
+              Storm Tracker es un proyecto que tiene como objetivo principal
+              monitorear y rastrear tormentas tropicales en tiempo real.
+              Utilizando datos obtenidos de la{" "}
+              <a
+                href="https://www.nhc.noaa.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-400 underline hover:text-green-300"
+              >
+                NHC
+              </a>
+              , la aplicación proporciona información precisa sobre la trayectoria,
+              intensidad y pronósticos de las tormentas. Los usuarios pueden
+              visualizar mapas interactivos.
             </p>
-          )}
-        </section>
+          </div>
 
-        <section className="space-y-6">
-          <h2 className="text-3xl font-medium text-white text-center">
-            Tormentas pasadas
-          </h2>
+          <div className="rounded-2xl p-6 flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+            <h3 className="text-xl font-medium text-white mb-6">Te invitamos a que indagues en nuestra pagina</h3>
+            
+            <Link
+              to="/tormentas_actuales"
+              className="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-green-700 transition-all text-center"
+            >
+              Tormentas Actuales
+            </Link>
 
+            <Link
+              to="/historico"
+              className="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-green-700 transition-all text-center"
+            >
+              Historico de Tormentas
+            </Link>
+
+          </div>
+        </div>
+      </section>
+
+      <div className="px-6 py-12">
+        <section>
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 h-120">
-            <div className="rounded-2xl p-6 bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
-              <h3 className="text-xl font-medium text-white mb-6">
-                Calendario
-              </h3>
-              <div className="calendar-container">
-                <DatePicker
-                  selected={selectedDate}
-                  onChange={handleDateChange}
-                  inline
-                  dateFormat="dd/MM/yyyy"
-                  showMonthDropdown
-                  showYearDropdown
-                  dropdownMode="select"
-                />
-              </div>
+            <div className="rounded-2xl p-6 flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+              <p className="text-white/60 mb-4">
+              Tropycal obtiene información actual de las tormentas tropicales a través de
+              una API pública desarrollada por nosotros, que recopila datos en tiempo real de
+              fuentes confiables como la NHC (National Hurricane Center). Esta API proporciona
+              datos actualizados sobre la ubicación, intensidad, trayectoria y pronósticos de las
+              tormentas tropicales, permitiendo a los usuarios acceder a información precisa y
+              oportuna para monitorear y rastrear estas condiciones climáticas.
+            </p>
+
+            <p className="text-white/60 mb-4">
+              Asi mismo recopilamos datos historicos de tormentas tropicales para su analisis y estudio.
+              De esta manera los usuarios pueden acceder a informacion valiosa sobre eventos pasados.
+            </p>
             </div>
 
             <div className="rounded-2xl p-6 flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
-              <h3 className="text-xl font-medium text-white mb-6">
-                Tormenta del d�a seleccionado
-              </h3>
-              <p className="text-white/60">
-                {selectedDate.toLocaleDateString("es-ES", {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric"
-                })}
-              </p>
+              <h3 className="text-xl font-medium text-white mb-6">Data</h3>
+
             </div>
           </div>
         </section>
       </div>
+
+        <section>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 h-120">
+            <div className="rounded-2xl p-6 flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+              <h3 className="text-xl font-medium text-white mb-6">Visualización</h3>
+              <p className="text-white/60 mb-4">
+                La visualización de datos en Storm Tracker se realiza mediante mapas interactivos
+                que muestran la trayectoria y ubicación de las tormentas tropicales en tiempo real.
+                Utilizando tecnologías como Folium, los usuarios pueden explorar mapas detallados y dinámicos
+                que representan la información meteorológica de manera clara y comprensible.
+              </p>
+            </div>
+
+            <div className="rounded-2xl p-6 flex flex-col bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+              <iframe
+                src="mapa.html"
+                title="Mapa de tormentas"
+                className="w-full h-96 rounded-lg border border-slate-700"
+              />
+            </div>
+          </div>
+        </section>
+
     </div>
   );
 }

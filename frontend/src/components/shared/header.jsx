@@ -10,28 +10,44 @@ function Header() {
       </div>
       <nav className="w-full p-4 flex justify-end">
         <ul className="flex gap-8 cursor-pointer">
-          {/* DASHBOARD LINK FOR TESTING PURPOSES ONLY */}
+
           <li>
-            <Link
-              to="/dashboard"
+            <Link 
+              to="/" 
               className="text-lg text-white hover:text-green-200"
             >
-              DashboardDEV
+            Home
             </Link>
           </li>
+
+          <li>
+            <Link
+              to="/Tormentas_Actuales"
+              className="text-lg text-white hover:text-green-200"
+            >
+            Tormentas Actuales
+            </Link>
+          </li>
+
+
+          <li>
+            <Link
+              to="/historico"
+              className="text-lg text-white hover:text-green-200"
+            >
+            Historico
+            </Link>
+          </li>
+
           <li>
             <Link
               to="/about"
               className="text-lg text-white hover:text-green-200"
             >
-              About
+            About Us
             </Link>
           </li>
-          <li>
-            <Link to="/" className="text-lg text-white hover:text-green-200">
-              Home
-            </Link>
-          </li>
+
         </ul>
       </nav>
     </header>
