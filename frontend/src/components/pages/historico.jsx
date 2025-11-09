@@ -17,7 +17,9 @@ function Historico() {
     const formattedDate = `${year}_${month}_${day}`;
 
     try {
-      const response = await fetch(`http://localhost:8000/data_date/${formattedDate}`);
+      const response = await fetch(
+        `http://localhost:8000/data_date/${formattedDate}`
+      );
       const json = await response.json();
 
       const lst_storms = json["Info Tormentas"] || [];
@@ -32,7 +34,7 @@ function Historico() {
   return (
     <div className="px-6 py-12">
       <section className="space-y-6" id="tormentas-pasadas">
-        <h2 className="text-3xl font-medium text-white text-center">
+        <h2 className="text-3xl font-medium text-center text-[#00FF66]">
           Histórico de tormentas
         </h2>
 
@@ -48,7 +50,8 @@ function Historico() {
             <h3 className="text-xl font-medium text-white mb-6">Calendario</h3>
 
             <p className="text-white/60 mb-4">
-              Selecciona una fecha para ver las tormentas registradas de ese día:
+              Selecciona una fecha para ver las tormentas registradas de ese
+              día:
             </p>
 
             <div className="calendar-container">
@@ -80,7 +83,10 @@ function Historico() {
               {pastStorms.length > 0 ? (
                 pastStorms.map((stormId) => {
                   const year = selectedDate.getFullYear();
-                  const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+                  const month = String(selectedDate.getMonth() + 1).padStart(
+                    2,
+                    "0"
+                  );
                   const day = String(selectedDate.getDate()).padStart(2, "0");
                   const formattedDate = `${year}_${month}_${day}`;
 

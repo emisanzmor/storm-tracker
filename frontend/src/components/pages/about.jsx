@@ -4,7 +4,7 @@ function About({ data }) {
       <div className="max-w-5xl mx-auto space-y-16">
         {/* Hero */}
         <div className="text-center">
-          <h1 className="text-4xl font-medium mb-4">
+          <h1 className="text-3xl font-medium mb-4 text-[#00FF66]">
             Acerca de la API de Datos de Tormentas
           </h1>
           <p className="text-lg text-gray-300">
