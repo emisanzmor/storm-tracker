@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "../Historico/datepicker.css";
+import "../Historical/datepicker.css";
 
 function Historico() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -26,7 +26,8 @@ function Historico() {
       setPastStorms(lst_storms);
 
       console.log("Tormentas del día:", lst_storms);
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Error al obtener tormentas pasadas:", error);
     }
   };

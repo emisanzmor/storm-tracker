@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/shared/header";
 import Footer from "./components/shared/footer";
 import Home from "./components/pages/home";
-import Dashboard from "./components/pages/dashboard";
+import Dashboard from "./components/Current/dashboard";
 import About from "./components/pages/about";
 import { useState } from "react";
-import Historico from "./components/pages/Historico";
-import Resumen_his from "./components/Historico/resume_his";
+import Historico from "./components/pages/historico";
+import Resumen_his from "./components/Historical/resume_his";
 import TormentasActuales from "./components/pages/actuales";
 
 function App() {
@@ -23,9 +23,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About data={devsArray} />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="tormentas_actuales" element={<TormentasActuales />} />
-
+          <Route path="/tormentas_actuales" element={<TormentasActuales />} />
+          <Route path="/dashboard/:id_storm" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
           <Route path="/resume/:date/:id_storm" element={<Resumen_his />} />
         </Routes>
