@@ -45,8 +45,8 @@ function Historico() {
             las tormentas registradas en ese día.
           </p>
         </div>
-
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 h-120">
+                  {/* Ajuste el mx-auto a mx-100 para hacer mas pequenos los bordes*/}
+        <div className="max-w-6xl mx-100 grid md:grid-cols-2 gap-8 h-120">
           <div className="rounded-2xl p-6 bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
             <h3 className="text-xl font-medium text-white mb-6">Calendario</h3>
 
