@@ -15,7 +15,7 @@ function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 left-0 w-full z-50 flex flex-row items-center justify-between backdrop-blur-md bg-[#011928]/60 border-b border-b-neutral-400/10 px-8 py-6">
+    <header className="fixed top-0 left-0 w-full z-50 flex flex-row items-center justify-between backdrop-blur-md bg-[#011928]/60 border-b border-b-neutral-400/10 px-8 py-6">
       {/* Logo */}
       <div>
         <Link

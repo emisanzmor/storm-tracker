@@ -35,7 +35,7 @@ function Tormentas_Actuales() {
   const currentStorm = activeStorms[currentSlide];
 
   return (
-    <div className="px-6 py-12 min-h-screen">
+    <div className="px-6 py-24 min-h-screen">
       <section className="space-y-6">
         <h2 className="text-3xl font-medium text-[#00FF66] text-center">
           Tormentas activas

@@ -18,7 +18,7 @@ function App() {
   // EN VEREMOS bg-linear-to-b from-[#000c14] via-[#001825] to-[#000c14]
   return (
     <BrowserRouter>
-      <div className="relative bg-[#000c14] w-full h-screen overflow-x-hidden">
+      <div className="relative bg-[#000c14] w-full min-h-screen overflow-x-hidden">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

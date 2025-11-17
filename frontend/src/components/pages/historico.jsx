@@ -33,7 +33,7 @@ function Historico() {
   };
 
   return (
-    <div className="px-6 py-12">
+    <div className="px-6 py-24">
       <section className="space-y-6" id="tormentas-pasadas">
         <h2 className="text-3xl font-medium text-center text-[#00FF66]">
           Histórico de tormentas
@@ -46,8 +46,8 @@ function Historico() {
           </p>
         </div>
                   {/* Ajuste el mx-auto a mx-100 para hacer mas pequenos los bordes*/}
-        <div className="max-w-6xl mx-100 grid md:grid-cols-2 gap-8 h-120">
-          <div className="rounded-2xl p-6 bg-slate-800/40 backdrop-blur-3xl border border-slate-700">
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+          <div className="rounded-2xl p-6 bg-slate-800/40 backdrop-blur-3xl border border-slate-700 max-w-md mx-auto">
             <h3 className="text-xl font-medium text-white mb-6">Calendario</h3>
 
             <p className="text-white/60 mb-4">
@@ -55,7 +55,7 @@ function Historico() {
               día:
             </p>
 
-            <div className="calendar-container">
+            <div className="calendar-container max-w-md mx-auto">
               <DatePicker
                 selected={selectedDate}
                 onChange={handleDateChange}
