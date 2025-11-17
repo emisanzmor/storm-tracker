@@ -1,4 +1,32 @@
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+
 function Dashboard() {
+  const {id_storm} = useParams();
+  const [tormenta, setTormenta] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const info_tormenta = await fetch(`http://localhost:8000/data/${id_storm}`);
+        const info = await info_tormenta.json();
+        setTormenta(info);
+
+        const imageResponse = await fetch(`http://localhost:8000/images/${id_storm}`);
+        const blob = await imageResponse.blob();
+        setImageUrl(URL.createObjectURL(blob));
+
+      } 
+      catch (error) {
+        console.error("Error al cargar datos de la tormenta:", error);
+      }
+    };
+
+    fetchData();
+  }, [id_storm]);
+
   return (
     <section className="h-auto pt-6 pl-8 pr-8 pb-8">
       <h2 className="text-3xl font-medium text-[#00FF66] text-left py-6">

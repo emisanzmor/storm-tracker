@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function Resumen_his() {
-  const { date, id_storm } = useParams();
+  const {date, id_storm} = useParams();
   const [tormenta, setTormenta] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
 

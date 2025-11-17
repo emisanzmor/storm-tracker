@@ -1,34 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; 
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+
 
 function Tormentas_Actuales() {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+
   const [activeStorms, setActiveStorms] = useState([]);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [pastStorms, setPastStorms] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0)
+
 
   useEffect(() => {
     const fetchActiveStorms = async () => {
       try {
-        const response = await fetch("http://localhost:8000/data");
-        const data = await response.json();
-        setActiveStorms(data);
-      } catch (error) {
+        const response = await fetch(`http://localhost:8000/data`);
+        const json = await response.json();
+        const ListStorms = json["Info Tormentas"] || [];
+
+        setActiveStorms(ListStorms);
+      } 
+      catch (error) {
         console.error("Error al cargar tormentas activas:", error);
       }
     };
     fetchActiveStorms();
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % activeStorms.length);
-  };
+  const nextSlide = () => { 
+    setCurrentSlide((prev) => (prev + 1) % activeStorms.length); };
 
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + activeStorms.length) % activeStorms.length
-    );
-  };
+  const prevSlide = () => { 
+    setCurrentSlide( (prev) => (prev - 1 + activeStorms.length) % activeStorms.length ); };
 
   const currentStorm = activeStorms[currentSlide];
 
@@ -39,15 +41,16 @@ function Tormentas_Actuales() {
           Tormentas activas
         </h2>
 
-        {activeStorms.length > 0 ? (
+        
+{activeStorms.length > 0 ? (
           <div className="relative max-w-3xl mx-auto">
             <div className="bg-slate-800/40 border border-slate-700 backdrop-blur-3xl rounded-xl p-6">
               {/* Imagen del mapa */}
               <div className="bg-slate-900/80 rounded-md overflow-hidden mb-6 h-114 flex items-center justify-center m-6">
                 {currentStorm ? (
                   <img
-                    src={`http://localhost:8000/images/${currentStorm.name}`}
-                    alt={currentStorm.name}
+                    src={`http://localhost:8000/images/${currentStorm}`}
+                    alt={currentStorm || " map"}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -56,13 +59,13 @@ function Tormentas_Actuales() {
               </div>
 
               <div className="flex gap-3 items-center">
-                <input
-                  type="text"
-                  value={currentStorm?.name || ""}
-                  readOnly
-                  className="flex-1 px-2 py-2 rounded-lg text-white text-center cursor-pointer hover:text-green-200"
-                  placeholder="Nombre de la tormenta"
-                />
+                <Link
+                key={currentStorm}
+                to={`/dashboard/${currentStorm}`}
+                className="flex-1 px-2 py-2 rounded-lg text-white text-center cursor-pointer hover:text-green-200"
+                >
+                  {currentStorm} 
+                </Link>
               </div>
             </div>
 
@@ -91,8 +94,10 @@ function Tormentas_Actuales() {
             No hay tormentas activas en este momento.
           </p>
         )}
+
       </section>
     </div>
   );
 }
+
 export default Tormentas_Actuales;
