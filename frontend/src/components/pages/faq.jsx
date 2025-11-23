@@ -1,4 +1,4 @@
-function About() {
+function Faq() {
   return (
     <section className="min-h-screen text-white p-4 sm:p-6 md:p-8 pt-20 sm:pt-24 md:pt-28">
       <div className="max-w-5xl mx-auto space-y-8 sm:space-y-12 md:space-y-16">
@@ -130,4 +130,4 @@ function About() {
   );
 }
 
-export default About;
+export default Faq;

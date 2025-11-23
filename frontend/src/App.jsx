@@ -3,11 +3,11 @@ import Header from "./components/shared/header";
 import Footer from "./components/shared/footer";
 import Home from "./components/pages/home";
 import Dashboard from "./components/Current/dashboard";
-import About from "./components/pages/about";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Historico from "./components/pages/historico";
 import Resumen_his from "./components/Historical/resume_his";
 import TormentasActuales from "./components/pages/actuales";
+import Faq from "./components/pages/faq";
 
 function App() {
   const [devsArray, setDevsArray] = useState([
@@ -15,14 +15,21 @@ function App() {
     "Bruno Arturo Goñi Flores",
     "Pedro Enrique Mendoza García",
   ]);
-  // EN VEREMOS bg-linear-to-b from-[#000c14] via-[#001825] to-[#000c14]
+
+  useEffect(() => {
+    document.documentElement.style.backgroundColor = "#000c14";
+    document.body.style.backgroundColor = "#000c14";
+    document.body.style.margin = "0";
+    document.body.style.padding = "0";
+  }, []);
+
   return (
     <BrowserRouter>
-      <div className="relative bg-[#000c14] w-full h-screen overflow-x-hidden">
+      <div className="relative bg-[#000c14] w-full overflow-x-hidden">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About data={devsArray} />} />
+          <Route path="/faq" element={<Faq />} />
           <Route path="/tormentas_actuales" element={<TormentasActuales />} />
           <Route path="/dashboard/:id_storm" element={<Dashboard />} />
           <Route path="/historico" element={<Historico />} />
