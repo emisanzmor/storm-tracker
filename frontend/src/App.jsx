@@ -14,6 +14,8 @@ function App() {
     "Emiliano Sánchez Moreno",
     "Bruno Arturo Goñi Flores",
     "Pedro Enrique Mendoza García",
+    "Brisa Sofia León Pérez",
+    "Valentina Tejeda Fuentes",
   ]);
 
   const [ip, setIp] = useState("localhost");

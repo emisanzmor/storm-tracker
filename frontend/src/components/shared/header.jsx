@@ -116,7 +116,7 @@ function Header() {
                   onClick={() => setOpen(false)}
                   className="block px-4 py-3 hover:text-[#03e55d] transition-all"
                 >
-                  FAQ
+                  Preguntas Frecuentes
                 </Link>
               </li>
             </ul>
