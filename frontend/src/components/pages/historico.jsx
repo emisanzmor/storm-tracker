@@ -48,7 +48,7 @@ function Historico() {
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 hover:border-[#00FF66]/30 transition-colors">
-            <h3 className="text-lg sm:text-xl font-medium text-[#00FF66] mb-4 sm:mb-6">
+            <h3 className="text-lg sm:text-xl font-medium text-[#00FF66] mb-4 sm:mb-2">
               Calendario
             </h3>
 

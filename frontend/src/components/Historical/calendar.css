@@ -40,3 +40,41 @@
 .calendar-container .react-calendar__month-view__days__day {
   color: white;
 }
+
+.calendar-container .react-calendar {
+  font-size: 1.15rem;
+}
+
+.calendar-container .react-calendar__tile {
+  padding: 12px 10px;
+  height: 64px;
+}
+
+.calendar-container .react-calendar__month-view__weekdays {
+  font-size: 1rem;
+  padding: 8px 0;
+}
+
+.calendar-container .react-calendar__navigation button {
+  font-size: 1.05rem;
+  padding: 8px 10px;
+}
+
+.calendar-container .react-calendar__tile abbr {
+  display: block;
+  line-height: 64px;
+  font-size: 1rem;
+}
+
+@media (max-width: 480px) {
+  .calendar-container .react-calendar {
+    font-size: 0.95rem;
+  }
+  .calendar-container .react-calendar__tile {
+    height: 44px;
+    padding: 8px 6px;
+  }
+  .calendar-container .react-calendar__tile abbr {
+    line-height: 44px;
+  }
+}
