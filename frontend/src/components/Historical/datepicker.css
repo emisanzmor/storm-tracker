@@ -38,3 +38,36 @@
 .react-datepicker__navigation:hover *::before {
   border-color: rgb(59, 130, 246) !important;
 }
+
+.react-datepicker {
+  font-size: 1.05rem !important;
+  padding: 0.4rem !important;
+}
+
+.react-datepicker__current-month {
+  font-size: 1.15rem !important;
+  padding: 0.5rem 0 !important;
+}
+
+.react-datepicker__day {
+  width: 2.6rem !important;
+  height: 2.6rem !important;
+  line-height: 2.6rem !important;
+  margin: 0.12rem !important;
+  font-size: 1rem !important;
+}
+
+.react-datepicker__navigation {
+  font-size: 1.05rem !important;
+}
+
+@media (max-width: 480px) {
+  .react-datepicker {
+    font-size: 0.95rem !important;
+  }
+  .react-datepicker__day {
+    width: 2.0rem !important;
+    height: 2.0rem !important;
+    line-height: 2.0rem !important;
+  }
+}
