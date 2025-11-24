@@ -58,7 +58,7 @@ function Header() {
                 to="/faq"
                 className="relative text-lg text-white px-2 py-1 after:content-[''] after:absolute after:inset-0 after:bg-[#00FF66]/60 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-600 hover:after:scale-x-100 overflow-hidden after:-z-10"
               >
-                FAQ
+                Preguntas Frecuentes
               </Link>
             </li>
           </ul>

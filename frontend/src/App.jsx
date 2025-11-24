@@ -16,6 +16,8 @@ function App() {
     "Pedro Enrique Mendoza García",
   ]);
 
+  const [ip, setIp] = useState("localhost");
+
   useEffect(() => {
     document.documentElement.style.backgroundColor = "#000c14";
     document.body.style.backgroundColor = "#000c14";

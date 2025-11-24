@@ -6,6 +6,8 @@ import "../Historical/datepicker.css";
 function Historico() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [pastStorms, setPastStorms] = useState([]);
+  const [ip, setIp] = useState("localhost");
+
 
   const handleDateChange = async (date) => {
     setSelectedDate(date);
@@ -17,7 +19,7 @@ function Historico() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/data_date/${formattedDate}`
+        `http://${ip}:8000/data_date/${formattedDate}`
       );
       const json = await response.json();
 

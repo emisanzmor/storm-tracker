@@ -45,7 +45,7 @@ function Home() {
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#03e55d] mb-4 sm:mb-6">
               Storm Tracker
             </h3>
-            <p className="text-white/60 text-sm sm:text-base md:text-lg leading-relaxed">
+            <p className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed">
               Storm Tracker es un proyecto dedicado a monitorear y rastrear
               tormentas tropicales en tiempo real. Usando datos de la{" "}
               <a
@@ -72,13 +72,13 @@ function Home() {
               <h3 className="text-xl sm:text-2xl font-medium text-[#03e55d] mb-3 sm:mb-4">
                 Tropycal API
               </h3>
-              <p className="text-white/60 text-sm sm:text-base">
+              <p className="text-white/80 text-sm sm:text-base">
                 Tropycal obtiene información actual de las tormentas tropicales
                 a través de una API pública desarrollada por nosotros, que
                 recopila datos en tiempo real de fuentes confiables como la NHC
                 (National Hurricane Center).
               </p>
-              <p className="text-white/60 text-sm sm:text-base pt-4 sm:pt-6">
+              <p className="text-white/80 text-sm sm:text-base pt-4 sm:pt-6">
                 También recopilamos datos históricos de tormentas tropicales
                 para su análisis y estudio, permitiendo acceder a información
                 valiosa sobre eventos pasados.
@@ -89,7 +89,7 @@ function Home() {
               <h3 className="text-xl sm:text-2xl font-medium text-[#03e55d] mb-3 sm:mb-4">
                 Visualización
               </h3>
-              <p className="text-white/60 text-sm sm:text-base mb-4">
+              <p className="text-white/80 text-sm sm:text-base mb-4">
                 La visualización se realiza mediante mapas interactivos que
                 muestran la trayectoria y ubicación de las tormentas tropicales
                 en tiempo real. Utilizando tecnologías como Folium, puedes
@@ -100,6 +100,8 @@ function Home() {
                 title="Mapa de tormentas"
                 className="w-full h-64 sm:h-80 md:h-96 rounded-lg border border-slate-700"
               />
+
+              <div className="text-xs text-white/30">Tormenta Melissa obtenida a las 21:00hrs(GMT-6) 30/Octubre/2025</div>
             </div>
           </div>
         </section>
