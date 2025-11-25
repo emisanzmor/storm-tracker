@@ -29,8 +29,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="relative bg-[#000c14] w-full overflow-x-hidden">
-        <Header />
+      <Header />
+      <main className="relative bg-[#000c14] w-full overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/faq" element={<Faq />} />
@@ -39,8 +39,8 @@ function App() {
           <Route path="/historico" element={<Historico />} />
           <Route path="/resume/:date/:id_storm" element={<Resumen_his />} />
         </Routes>
-        <Footer data={devsArray} />
-      </div>
+      </main>
+      <Footer data={devsArray} />
     </BrowserRouter>
   );
 }
