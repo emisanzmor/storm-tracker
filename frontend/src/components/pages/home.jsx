@@ -101,7 +101,9 @@ function Home() {
                 className="w-full h-64 sm:h-80 md:h-96 rounded-lg border border-slate-700"
               />
 
-              <div className="text-xs text-white/30">Tormenta Melissa obtenida a las 21:00hrs(GMT-6) 30/Octubre/2025</div>
+              <div className="mt-2 text-xs text-white/30">
+                Tormenta Melissa obtenida a las 21:00hrs(GMT-6) 30/Octubre/2025
+              </div>
             </div>
           </div>
         </section>

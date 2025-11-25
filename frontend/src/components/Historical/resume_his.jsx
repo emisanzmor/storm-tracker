@@ -15,7 +15,6 @@ function Resumen_his() {
   const [isZipDownloaded, setIsZipDownloaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,20 +23,24 @@ function Resumen_his() {
           setTimeout(() => reject(new Error("Timeout")), 5000)
         );
 
-        const opcionesPromise = fetch(`http://${ip}:8000/hour_date/${date}/${id_storm}`)
-          .then((res) => res.json());
+        const opcionesPromise = fetch(
+          `http://${ip}:8000/hour_date/${date}/${id_storm}`
+        ).then((res) => res.json());
 
         // Utilizamos Promise.race para controlar el timeout
-        const opcionesJson = await Promise.race([opcionesPromise, timeoutPromise]);
+        const opcionesJson = await Promise.race([
+          opcionesPromise,
+          timeoutPromise,
+        ]);
 
-        // Si la lista viene vacía → marcar no hay datos
+        // Si la lista viene vacía -> marcar no hay datos
         if (!opcionesJson || opcionesJson.length === 0) {
           console.warn("⚠ Lista de horas vacía o no disponible.");
-          
-          setOpcionesMenu([]);      
+
+          setOpcionesMenu([]);
           setSelectedHour(null);
           setImageUrl(null);
-          setImageError(true);       // ← marca "no hay mapa"
+          setImageError(true); // <- marca "no hay mapa"
 
           return; // detener aquí
         }
@@ -48,8 +51,7 @@ function Resumen_his() {
         // seleccionar la primera hora automáticamente
         loadHourData(opcionesJson[0]);
         setSelectedHour(opcionesJson[0]);
-      }
-      catch (error) {
+      } catch (error) {
         console.error("Error al cargar opciones (timeout o fallo):", error);
 
         // fallback defensivo por si hubo error al consultar el endpoint
@@ -57,25 +59,27 @@ function Resumen_his() {
         setSelectedHour(null);
         setImageUrl(null);
         setImageError(true);
-
       }
     };
 
     fetchData();
   }, [date, id_storm, ip]);
 
-
   // 2️⃣ Función que carga la información usando la hora seleccionada
   const loadHourData = async (hour) => {
     try {
-      const infoRes = await fetch(`http://${ip}:8000/data_date/${date}/${id_storm}/${hour}`);
+      const infoRes = await fetch(
+        `http://${ip}:8000/data_date/${date}/${id_storm}/${hour}`
+      );
       setTormenta(await infoRes.json());
 
-      const imageRes = await fetch(`http://${ip}:8000/image_date/${date}/${id_storm}/${hour}`);
+      const imageRes = await fetch(
+        `http://${ip}:8000/image_date/${date}/${id_storm}/${hour}`
+      );
 
       if (!imageRes.ok) {
         setImageUrl(null);
-        setImageError(true);   // ❌ No hay imagen
+        setImageError(true); // No hay imagen
         return;
       }
 
@@ -83,28 +87,25 @@ function Resumen_his() {
 
       if (!contentType || !contentType.startsWith("image/")) {
         setImageUrl(null);
-        setImageError(true);   // ❌ No es imagen válida
+        setImageError(true); // No es imagen válida
         return;
       }
 
       const blob = await imageRes.blob();
       if (blob.size === 0) {
         setImageUrl(null);
-        setImageError(true);   // ❌ Imagen vacía
+        setImageError(true); // Imagen vacía
         return;
       }
 
       setImageUrl(URL.createObjectURL(blob));
-      setImageError(false);    // ✅ Hay imagen
-
+      setImageError(false); // Hay imagen
     } catch (error) {
       console.error("Error cargando datos:", error);
       setImageUrl(null);
-      setImageError(true);     // ❌ Error → no hay imagen
+      setImageError(true); // Error -> no hay imagen
     }
   };
-
-
 
   const handleHourChange = (e) => {
     const hour = e.target.value;
@@ -126,14 +127,12 @@ function Resumen_his() {
     setTimeout(() => setIsDownloadedpng(false), 2000);
   };
 
-
   // Descargar JSON
   const handleDownloadJson = async () => {
     try {
-
       if (!date || !id_storm || !selectedHour) return;
 
-      // Llamada a tu API FastAPI
+      // Llamada a API FastAPI
       const response = await fetch(
         `http://localhost:8000/TraducirJson/${date}/${id_storm}/${selectedHour}`
       );
@@ -143,11 +142,13 @@ function Resumen_his() {
         return;
       }
 
-      // La API regresa un diccionario → convertirlo a objeto JS
+      // La API regresa un diccionario -> convertirlo a objeto JS
       const data = await response.json();
 
       // Crear el archivo JSON
-      const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json",});
+      const blob = new Blob([JSON.stringify(data, null, 2)], {
+        type: "application/json",
+      });
 
       const url = URL.createObjectURL(blob);
 
@@ -165,12 +166,13 @@ function Resumen_his() {
 
     setIsDownloadedjson(true);
     setTimeout(() => setIsDownloadedjson(false), 2000); // vuelve al icono original después de 2s
-
   };
 
   const handleDownloadZip = async () => {
     try {
-      const response = await fetch(`http://${ip}:8000/zipTormenta/${date}/${id_storm}`);
+      const response = await fetch(
+        `http://${ip}:8000/zipTormenta/${date}/${id_storm}`
+      );
 
       if (!response.ok) {
         console.error("Error descargando ZIP");
@@ -192,17 +194,14 @@ function Resumen_his() {
       // Cambiar icono temporalmente
       setIsZipDownloaded(true);
       setTimeout(() => setIsZipDownloaded(false), 2000);
-
     } catch (e) {
       console.error("Error en descarga ZIP:", e);
     }
   };
 
-
   return (
     <section className="min-h-screen px-4 sm:px-6 md:px-8 py-8">
       <div className="max-w-6xl mx-auto space-y-6">
-
         <div className="w-full sm:w-64 mx-auto sm:mx-0">
           <label className="block text-white/70 text-sm mb-2">
             Seleccionar hora:
@@ -261,8 +260,6 @@ function Resumen_his() {
           </div>
         </div>
 
-
-        
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           <div className="lg:col-span-1 bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-lg sm:rounded-xl hover:border-[#00FF66]/30 transition-colors">
             <div className="p-4 sm:p-5 md:p-6">
@@ -358,8 +355,6 @@ function Resumen_his() {
                 Descargar datos en JSON
               </span>
             </div>
-
-
           </div>
 
           <div className="lg:col-span-2 bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-lg sm:rounded-xl hover:border-[#00FF66]/30 transition-colors">
@@ -398,9 +393,10 @@ function Resumen_his() {
                 className={`
                   flex items-center justify-center w-10 h-10 rounded-lg border
                   transition 
-                  ${imageUrl 
-                    ? "border-green-500 hover:bg-green-600/20 cursor-pointer bg-transparent" 
-                    : "border-gray-600 opacity-40 cursor-not-allowed bg-slate-700/30"
+                  ${
+                    imageUrl
+                      ? "border-green-500 hover:bg-green-600/20 cursor-pointer bg-transparent"
+                      : "border-gray-600 opacity-40 cursor-not-allowed bg-slate-700/30"
                   }
                 `}
               >
@@ -429,11 +425,8 @@ function Resumen_his() {
                 </span>
               )}
             </div>
-
-
           </div>
         </div>
-
       </div>
     </section>
   );

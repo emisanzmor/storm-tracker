@@ -6,6 +6,11 @@ function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const [open, setOpen] = useState(false);
 
+  const mobileLinkClass = "block px-4 py-3 hover:text-[#03e55d] transition-all";
+
+  const navLinkClass =
+    "relative text-lg px-2 py-1 after:content-[''] text-white hover:text-[#000c14] hover:after:scale-x-100 after:absolute after:inset-0 after:bg-[#00FF66]/95 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-500 overflow-hidden after:-z-10 transition-colors duration-500";
+
   // Detecta si la pantalla es menor a 768px
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -30,34 +35,22 @@ function Header() {
         {!isMobile && (
           <ul className="flex gap-12 cursor-pointer">
             <li>
-              <Link
-                to="/"
-                className="relative text-lg text-white px-2 py-1 after:content-[''] after:absolute after:inset-0 after:bg-[#00FF66]/60 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-600 hover:after:scale-x-100 overflow-hidden after:-z-10"
-              >
+              <Link to="/" className={navLinkClass}>
                 Inicio
               </Link>
             </li>
             <li>
-              <Link
-                to="/tormentas_actuales"
-                className="relative text-lg text-white px-2 py-1 after:content-[''] after:absolute after:inset-0 after:bg-[#00FF66]/60 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-600 hover:after:scale-x-100 overflow-hidden after:-z-10"
-              >
+              <Link to="/tormentas_actuales" className={navLinkClass}>
                 Tormentas Actuales
               </Link>
             </li>
             <li>
-              <Link
-                to="/historico"
-                className="relative text-lg text-white px-2 py-1 after:content-[''] after:absolute after:inset-0 after:bg-[#00FF66]/60 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-600 hover:after:scale-x-100 overflow-hidden after:-z-10"
-              >
+              <Link to="/historico" className={navLinkClass}>
                 Histórico
               </Link>
             </li>
             <li>
-              <Link
-                to="/faq"
-                className="relative text-lg text-white px-2 py-1 after:content-[''] after:absolute after:inset-0 after:bg-[#00FF66]/60 after:transform after:scale-x-0 after:origin-left after:transition-transform after:duration-600 hover:after:scale-x-100 overflow-hidden after:-z-10"
-              >
+              <Link to="/faq" className={navLinkClass}>
                 Preguntas Frecuentes
               </Link>
             </li>
@@ -87,7 +80,7 @@ function Header() {
                 <Link
                   to="/"
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-3 hover:text-[#03e55d] transition-all"
+                  className={mobileLinkClass}
                 >
                   Inicio
                 </Link>
@@ -96,7 +89,7 @@ function Header() {
                 <Link
                   to="/tormentas_actuales"
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-3 hover:text-[#03e55d] transition-all"
+                  className={mobileLinkClass}
                 >
                   Tormentas actuales
                 </Link>
@@ -105,7 +98,7 @@ function Header() {
                 <Link
                   to="/historico"
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-3 hover:text-[#03e55d] transition-all"
+                  className={mobileLinkClass}
                 >
                   Histórico
                 </Link>
@@ -114,7 +107,7 @@ function Header() {
                 <Link
                   to="/faq"
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-3 hover:text-[#03e55d] transition-all"
+                  className={mobileLinkClass}
                 >
                   Preguntas Frecuentes
                 </Link>

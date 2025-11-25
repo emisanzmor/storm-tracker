@@ -20,6 +20,7 @@ function Tormentas_Actuales() {
         setActiveStorms(ListStorms);
       } catch (error) {
         console.error("Error al cargar tormentas activas:", error);
+        //setActiveStorms(["fake1.png", "fake2.png"]);
       }
     };
     fetchActiveStorms();
@@ -59,7 +60,6 @@ function Tormentas_Actuales() {
           <div className="relative max-w-5xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
             <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 hover:border-[#00FF66]/30 transition-colors">
               <div className="bg-slate-900/80 rounded-md overflow-hidden mb-4 sm:mb-6 h-48 sm:h-64 md:h-80 lg:h-96 flex items-center justify-center">
-
                 {/* Mostrar loading */}
                 {loading && !error && (
                   <h3 className="text-white/40 text-sm sm:text-base">
