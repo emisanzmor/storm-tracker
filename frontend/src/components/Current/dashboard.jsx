@@ -73,7 +73,6 @@ function Dashboard() {
 
   return (
     <section className="min-h-screen px-4 sm:px-6 md:px-8 py-10 pt-16">
-
       {/* TÍTULO */}
       <div className="max-w-7xl mx-auto mb-10">
         <h2 className="text-3xl sm:text-5xl font-medium text-[#00FF66]">
@@ -82,19 +81,18 @@ function Dashboard() {
       </div>
 
       <div className="max-w-7xl mx-auto space-y-10">
-
         {/* SECCIÓN 1 — Predicción y Terminología */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
           {/* Predicción */}
           <div className="lg:col-span-2 bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6">
             <h3 className="text-xl sm:text-2xl font-medium text-[#00FF66] mb-4">
               Mapa
             </h3>
 
-            <div className="bg-slate-900/80 rounded-md flex justify-center items-center overflow-hidden 
-                            min-h-[350px] sm:min-h-[450px] md:min-h-[550px] lg:min-h-[620px]">
-
+            <div
+              className="bg-slate-900/80 rounded-md flex justify-center items-center overflow-hidden 
+                            min-h-[350px] sm:min-h-[450px] md:min-h-[550px] lg:min-h-[620px]"
+            >
               {predStatus === "loading" && (
                 <p className="text-white/40">Cargando predicción...</p>
               )}
@@ -121,12 +119,10 @@ function Dashboard() {
               Terminología
             </h3>
 
-            <div className="space-y-3 text-white/80 text-sm pt-10">
-
+            <div className="space-y-3 text-white/80 text-sm pt-4">
               {/* Símbolos */}
               <div className="flex items-center gap-3">
-                <div className="w-4 h-4"
-                     style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)", border: "1px solid white" }} />
+                <div className="w-4 h-4 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-12 border-b-white"></div>
                 <span>No Tropical (△)</span>
               </div>
 
@@ -189,7 +185,6 @@ function Dashboard() {
                 <div className="w-4 h-4 bg-gray-400/60 rounded-sm" />
                 <span>Cono de incertidumbre</span>
               </div>
-
             </div>
           </div>
         </div>
@@ -202,7 +197,6 @@ function Dashboard() {
 
           {tormenta ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white/80 text-sm sm:text-base md:text-lg leading-relaxed md:leading-loose">
-
               {(() => {
                 const lat = tormenta.lat;
                 const lon = tormenta.lon;
@@ -214,21 +208,32 @@ function Dashboard() {
                   <>
                     {/* Columna izquierda */}
                     <div className="space-y-3">
-                      <p><b>Nombre:</b> {tormenta.name}</p>
-                      <p><b>Latitud actual:</b> {Math.abs(lat)}° {latDir}</p>
-                      <p><b>Longitud actual:</b> {Math.abs(lon)}° {lonDir}</p>
+                      <p>
+                        <b>Nombre:</b> {tormenta.name}
+                      </p>
+                      <p>
+                        <b>Latitud actual:</b> {Math.abs(lat)}° {latDir}
+                      </p>
+                      <p>
+                        <b>Longitud actual:</b> {Math.abs(lon)}° {lonDir}
+                      </p>
                     </div>
 
                     {/* Columna derecha */}
                     <div className="space-y-3">
-                      <p><b>Id:</b> {tormenta.id}</p>
-                      <p><b>Viento máximo actual:</b> {tormenta.max_wind} kt</p>
-                      <p><b>Presión mínima actual:</b> {tormenta.min_mslp} hPa</p>
+                      <p>
+                        <b>Id:</b> {tormenta.id}
+                      </p>
+                      <p>
+                        <b>Viento máximo actual:</b> {tormenta.max_wind} kt
+                      </p>
+                      <p>
+                        <b>Presión mínima actual:</b> {tormenta.min_mslp} hPa
+                      </p>
                     </div>
                   </>
                 );
               })()}
-
             </div>
           ) : (
             <p className="text-white/40 text-lg">Cargando información...</p>
@@ -251,7 +256,6 @@ function Dashboard() {
             </div>
           </div>
         )}
-
       </div>
     </section>
   );
