@@ -90,12 +90,16 @@ function Faq() {
               ¿Cómo puedo usar su API?
             </h2>
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-              Puede entrar a nuestro repositorio y descargarlo para tu uso
-              propio:{" "}
-              <span className="text-[#00FF66]">
-                {"{placeholder de github}"}
-              </span>
-              .
+              Puede entrar a nuestro{" "}
+              <a
+                href="https://github.com/ElEmLLi/Tropycal_API"
+                className="text-[#00FF66] underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                repositorio
+              </a>{" "}
+              y descargarlo para tu uso propio.
             </p>
           </div>
 
