@@ -1,7 +1,12 @@
-# storm-tracker
+# Storm Tracker / Rastreador de Tormentas
 
-<img width="1440" height="900" alt="Screenshot 2025-11-09 at 0 19 36" src="https://github.com/user-attachments/assets/4d0728c3-6213-4490-b4e6-2e7ce3c161a7" />
-<img width="1440" height="900" alt="Screenshot 2025-11-09 at 0 19 41" src="https://github.com/user-attachments/assets/d11ccaeb-5f7c-4264-b030-52852e2c75a7" />
-<img width="1440" height="900" alt="Screenshot 2025-11-09 at 0 19 47" src="https://github.com/user-attachments/assets/909f42ac-429c-441d-bd6b-b0530737c348" />
-<img width="1440" height="900" alt="Screenshot 2025-11-09 at 0 19 51" src="https://github.com/user-attachments/assets/9c82b485-15b9-419f-99ae-d3a39f9007cc" />
+A web application to track, visualize, and explore current and historical storm data.  
+Aplicación web para rastrear, visualizar y explorar datos de tormentas actuales e históricas.
+
+![status](https://img.shields.io/badge/status-work--in--progress-00CC4F)
+
+<img width="1440" height="900" alt="Screenshot 2025-11-25 at 1 07 24" src="https://github.com/user-attachments/assets/85680c95-4712-4a17-8b61-23e60d2e85d3" />
+<img width="1440" height="900" alt="Screenshot 2025-11-25 at 1 07 28" src="https://github.com/user-attachments/assets/80e8384f-37cb-43d0-b916-5e0e79f6f5f5" />
+<img width="1440" height="900" alt="Screenshot 2025-11-25 at 1 07 31" src="https://github.com/user-attachments/assets/f4ee6f74-baa2-44e5-af9b-ae5970e772dc" />
+<img width="1440" height="900" alt="Screenshot 2025-11-25 at 1 07 36" src="https://github.com/user-attachments/assets/4328cbb3-3338-4f36-b29b-6d523d9233d2" />
 
