@@ -110,10 +110,10 @@ function Faq() {
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               Comunícate con nosotros a través de correo{" "}
               <a
-                href="mailto:placeholder@gmail.com"
+                href="mailto:stormtracker@gmail.com"
                 className="text-blue-400 underline hover:text-blue-300 transition-colors break-all"
               >
-                placeholder@gmail.com
+                stormtracker@gmail.com
               </a>{" "}
               y haznos saber tu inquietud.
             </p>

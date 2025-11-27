@@ -17,7 +17,7 @@ function Home() {
               after:z-0 overflow-hidden
             "
           >
-            Placeholder Placeholder
+            Visualizador Tropical
           </h1>
           <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-4">
             Explora mapas en vivo y análisis sobre sistemas tropicales en todo
