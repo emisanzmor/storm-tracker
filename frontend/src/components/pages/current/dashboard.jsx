@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Table from "../../shared/table";
+import { FiDownload } from "react-icons/fi";
+import { formatForecastToRows } from "../../../utils/formatForecast";
 
 function Dashboard() {
   const { id_storm } = useParams();
@@ -11,6 +14,23 @@ function Dashboard() {
 
   const [mapHtml, setMapHtml] = useState(null);
   const [ip] = useState("localhost");
+
+  const [forecastData, setForecastData] = useState([]);
+
+  const handleDownloadForecastJson = () => {
+    if (!forecastData || forecastData.length === 0) return;
+    const blob = new Blob([JSON.stringify(forecastData, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `forecast_${id_storm}_active.json`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   /* Limpieza de URLs temporales */
   useEffect(() => {
@@ -66,6 +86,25 @@ function Dashboard() {
       } catch (err) {
         console.error("Error cargando data:", err);
       }
+
+      try {
+        const tableRes = await fetch(
+          `http://${ip}:8000/data_forecast/${date}/${id_storm}/${hour}`
+        );
+        if (!tableRes.ok) {
+          setForecastData([]);
+          console.error("No se pudo cargar la data de la tabla.");
+        } else {
+          const data = await tableRes.json();
+
+          // Convertir JSON a filas para la tabla
+          const rows = formatForecastToRows(data);
+          setForecastData(rows);
+        }
+      } catch (err) {
+        console.error("Error en fetch data_forecast:", err);
+        setForecastData([]);
+      }
     };
 
     fetchData();
@@ -84,7 +123,7 @@ function Dashboard() {
         {/* SECCIÓN 1 — Predicción y Terminología */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Predicción */}
-          <div className="lg:col-span-2 bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6">
+          <div className="lg:col-span-2 bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-[#00FF66]/30 transition-colors">
             <h3 className="text-xl sm:text-2xl font-medium text-[#00FF66] mb-4">
               Mapa
             </h3>
@@ -114,7 +153,7 @@ function Dashboard() {
           </div>
 
           {/* Terminología */}
-          <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6">
+          <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-[#00FF66]/30 transition-colors">
             <h3 className="text-xl font-medium text-[#00FF66] mb-4">
               Terminología
             </h3>
@@ -190,7 +229,7 @@ function Dashboard() {
         </div>
 
         {/* SECCIÓN 2 — Resumen */}
-        <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6">
+        <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-[#00FF66]/30 transition-colors">
           <h3 className="text-2xl sm:text-3xl font-medium text-[#00FF66] mb-5">
             Resumen de tormenta {tormenta?.name}
           </h3>
@@ -240,7 +279,31 @@ function Dashboard() {
           )}
         </div>
 
-        {/* SECCIÓN 3 — Mapa dinámico */}
+        {/* Tabla de datos */}
+        <div className="w-full space-y-3">
+          <Table data={forecastData} />
+          {/* Descargar JSON tabla */}
+          <div className="flex items-center justify-end">
+            <button
+              onClick={handleDownloadForecastJson}
+              disabled={!forecastData || forecastData.length === 0}
+              className={`
+                inline-flex items-center gap-2 px-3 py-2 rounded-lg text-sm
+                border transition
+                ${
+                  forecastData && forecastData.length > 0
+                    ? "border-green-500 text-green-400 hover:bg-green-600/20"
+                    : "border-gray-600 text-gray-400 opacity-50 cursor-not-allowed"
+                }
+              `}
+            >
+              <FiDownload className="text-current" />
+              <span>Descargar JSON tabla</span>
+            </button>
+          </div>
+        </div>
+
+        {/* SECCIÓN 4 — Mapa dinámico */}
         {mapHtml && (
           <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6">
             <h3 className="text-xl sm:text-2xl font-medium text-[#00FF66] mb-4">
