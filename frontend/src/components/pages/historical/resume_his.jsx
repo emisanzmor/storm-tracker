@@ -472,6 +472,50 @@ function Resumen_his() {
           </div>
         </div>
 
+        <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:border-[#00FF66]/30 transition-colors">
+            <h3 className="text-xl font-medium text-[#00FF66] mb-4">
+              Terminología
+            </h3>
+
+            <div className="space-y-3 text-white/80 text-sm pt-4">
+              {/* Colores */}
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-sky-300" />
+                <span>Depresión Tropical</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-sky-600" />
+                <span>Tormenta Tropical</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-yellow-400" />
+                <span>Categoría 1</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-orange-500" />
+                <span>Categoría 2</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-red-600" />
+                <span>Categoría 3</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-fuchsia-500" />
+                <span>Categoría 4</span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 rounded-full bg-purple-700" />
+                <span>Categoría 5</span>
+              </div>
+            </div>
+          </div>
+
         {/* Tabla de datos */}
         <div className="w-full space-y-3">
           <Table data={forecastData} />

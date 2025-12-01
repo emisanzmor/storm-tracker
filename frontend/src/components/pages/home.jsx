@@ -20,8 +20,7 @@ function Home() {
             Visualizador Tropical
           </h1>
           <p className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl mx-auto px-4">
-            Explora mapas en vivo y análisis sobre sistemas tropicales en todo
-            el mundo.
+            Explora mapas en vivo y análisis sobre sistemas tropicales.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pt-4 px-4">

@@ -56,7 +56,7 @@ function Dashboard() {
 
         /* 2 — Imagen predicción */
         try {
-          const predResp = await fetch(`http://${ip}:8000/images/${id_storm}`);
+          const predResp = await fetch(`http://${ip}:8000/image/${id_storm}`);
 
           if (!predResp.ok) {
             setPredStatus("notfound");
@@ -89,7 +89,7 @@ function Dashboard() {
 
       try {
         const tableRes = await fetch(
-          `http://${ip}:8000/data_forecast/${date}/${id_storm}/${hour}`
+          `http://${ip}:8000/data_forecast_actual/${id_storm}`
         );
         if (!tableRes.ok) {
           setForecastData([]);
