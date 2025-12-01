@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Table from "../shared/table";
 
 function Dashboard() {
   const { id_storm } = useParams();
@@ -240,7 +241,19 @@ function Dashboard() {
           )}
         </div>
 
-        {/* SECCIÓN 3 — Mapa dinámico */}
+        {/* SECCIÓN 3 — Tabla de datos */}
+        <div className="w-full">
+          <Table data={tormenta ? [
+            {
+              horas: "Actual",
+              latitud: tormenta.lat || "-",
+              longitud: tormenta.lon || "-",
+              incertidumbre: tormenta.uncertainty || "-"
+            }
+          ] : []} />
+        </div>
+
+        {/* SECCIÓN 4 — Mapa dinámico */}
         {mapHtml && (
           <div className="bg-slate-800/30 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6">
             <h3 className="text-xl sm:text-2xl font-medium text-[#00FF66] mb-4">

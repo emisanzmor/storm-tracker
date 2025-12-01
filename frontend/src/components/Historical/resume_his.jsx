@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FiDownload } from "react-icons/fi";
 import { MdOutlineDownloadDone } from "react-icons/md";
+import Table from "../shared/table";
 
 function Resumen_his() {
   const { date, id_storm } = useParams();
@@ -426,6 +427,18 @@ function Resumen_his() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Tabla de datos */}
+        <div className="w-full">
+          <Table data={tormenta ? [
+            {
+              horas: selectedHour || "-",
+              latitud: tormenta.latitude || "-",
+              longitud: tormenta.longitude || "-",
+              incertidumbre: tormenta.uncertainty || "-"
+            }
+          ] : []} />
         </div>
       </div>
     </section>
