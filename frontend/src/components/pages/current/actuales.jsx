@@ -20,7 +20,7 @@ function Tormentas_Actuales() {
         setActiveStorms(ListStorms);
       } catch (error) {
         console.error("Error al cargar tormentas activas:", error);
-        //setActiveStorms(["fake1.png", "fake2.png"]);
+        setActiveStorms(["fake1.png", "fake2.png"]);
       }
     };
     fetchActiveStorms();

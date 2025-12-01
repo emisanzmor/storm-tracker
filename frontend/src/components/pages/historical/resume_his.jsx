@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FiDownload } from "react-icons/fi";
 import { MdOutlineDownloadDone } from "react-icons/md";
+import Table from "../../shared/table";
+import { formatForecastToRows } from "../../../utils/formatForecast";
 
 function Resumen_his() {
   const { date, id_storm } = useParams();
@@ -12,8 +14,10 @@ function Resumen_his() {
   const [ip, setIp] = useState("localhost");
   const [isDownloadedjson, setIsDownloadedjson] = useState(false);
   const [isDownloadedpng, setIsDownloadedpng] = useState(false);
+  const [isDownloadedforecast, setIsDownloadedforecast] = useState(false);
   const [isZipDownloaded, setIsZipDownloaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [forecastData, setForecastData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,6 +85,20 @@ function Resumen_his() {
         setImageUrl(null);
         setImageError(true); // No hay imagen
         return;
+      }
+
+      const tableRes = await fetch(
+        `http://${ip}:8000/data_forecast/${date}/${id_storm}/${hour}`
+      );
+      if (!tableRes.ok) {
+        setForecastData([]);
+        console.error("No se pudo cargar la data de la tabla.");
+      } else {
+        const data = await tableRes.json();
+
+        // Convertir JSON a filas para la tabla
+        const rows = formatForecastToRows(data);
+        setForecastData(rows);
       }
 
       const contentType = imageRes.headers.get("Content-Type");
@@ -166,6 +184,32 @@ function Resumen_his() {
 
     setIsDownloadedjson(true);
     setTimeout(() => setIsDownloadedjson(false), 2000); // vuelve al icono original después de 2s
+  };
+
+  // Descargar JSON del pronóstico (tabla)
+
+  const handleDownloadForecastJson = () => {
+    if (!forecastData || forecastData.length === 0) return;
+    const blob = new Blob([JSON.stringify(forecastData, null, 2)], {
+      type: "application/json",
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `forecast_${id_storm}_${date}_${
+      selectedHour || "all"
+    }.json`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+
+    setIsDownloadedforecast(true);
+    setTimeout(() => setIsDownloadedforecast(false), 2000);
   };
 
   const handleDownloadZip = async () => {
@@ -425,6 +469,35 @@ function Resumen_his() {
                 </span>
               )}
             </div>
+          </div>
+        </div>
+
+        {/* Tabla de datos */}
+        <div className="w-full space-y-3">
+          <Table data={forecastData} />
+
+          {/* Descargar JSON tabla */}
+          <div className="flex items-center justify-end">
+            <button
+              onClick={handleDownloadForecastJson}
+              disabled={!forecastData || forecastData.length === 0}
+              className={`
+                flex items-center justify-center w-10 h-10 
+                          border border-green-500 rounded-lg
+                          bg-transparent transition hover:bg-green-600/20
+                ${
+                  forecastData && forecastData.length > 0
+                    ? "border-green-500 text-green-400 hover:bg-green-600/20"
+                    : "border-gray-600 text-gray-400 opacity-50 cursor-not-allowed"
+                }
+              `}
+            >
+              {isDownloadedforecast ? (
+                <MdOutlineDownloadDone className="text-green-500 text-xl" />
+              ) : (
+                <FiDownload className="text-green-500 text-xl" />
+              )}
+            </button>
           </div>
         </div>
       </div>

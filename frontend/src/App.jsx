@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/shared/header";
 import Footer from "./components/shared/footer";
 import Home from "./components/pages/home";
-import Dashboard from "./components/Current/dashboard";
+import Dashboard from "./components/pages/current/dashboard";
 import { useState, useEffect } from "react";
-import Historico from "./components/pages/historico";
-import Resumen_his from "./components/Historical/resume_his";
-import TormentasActuales from "./components/pages/actuales";
+import Historico from "./components/pages/historical/historico";
+import Resumen_his from "./components/pages/historical/resume_his";
+import TormentasActuales from "./components/pages/current/actuales";
 import Faq from "./components/pages/faq";
 
 function App() {
