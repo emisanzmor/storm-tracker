@@ -4,7 +4,6 @@
 
 **ES:** Aplicación web para **visualizar y descargar información de tormentas y huracanes** usando datos de la NHC a través de [`Tropycal_API`](https://github.com/ElEmLLi/Tropycal_API).
 
-
 ## Features | Características
 
 **EN:**
@@ -77,4 +76,3 @@ npm run dev
 <img width="800" alt="Screenshot 2025-12-01 at 3 28 11" src="https://github.com/user-attachments/assets/ea02fef8-5b83-4c47-8f17-bbbd04bf92d8" />
 <img width="800" alt="Screenshot 2025-12-01 at 3 24 06" src="https://github.com/user-attachments/assets/1e84c685-8817-4f48-8ef8-b0aabb0d8841" />
 <img width="800" alt="Screenshot 2025-11-25 at 1 07 36" src="https://github.com/user-attachments/assets/4328cbb3-3338-4f36-b29b-6d523d9233d2" />
-
